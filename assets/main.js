@@ -1,9 +1,31 @@
-/* Dulzein Bio: scroll-driven "mini game" interactions. No dependencies. */
+/* Dulzein Bio: scroll-driven interactions. No dependencies. */
 (() => {
   const root = document.documentElement;
   root.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  /* ---------- Split headings into words (staggered reveal) ---------- */
+  document.querySelectorAll('[data-split]').forEach((el) => {
+    let i = 0;
+    const walk = (node) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(' '); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const inner = document.createElement('span'); inner.textContent = part;
+            inner.style.setProperty('--i', i++);
+            w.append(inner); frag.append(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+  });
 
   /* ---------- Reveal on scroll + counters ---------- */
   const counters = new Set();
@@ -16,7 +38,7 @@
       io.unobserve(e.target);
     }
   }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('[data-reveal], [data-count]').forEach((el) => io.observe(el));
+  document.querySelectorAll('[data-reveal], [data-count], [data-split]').forEach((el) => io.observe(el));
 
   function countUp(el) {
     if (counters.has(el) || reduce) return;
@@ -40,14 +62,10 @@
     requestAnimationFrame(step);
   }
 
-  /* ---------- Scroll progress (--p) + HUD ---------- */
+  /* ---------- Scroll progress (--p) ---------- */
   const scrollEls = [...document.querySelectorAll('[data-scroll]')];
-  const levels = [...document.querySelectorAll('[data-level]')];
-  const hud = document.querySelector('.hud');
-  const hudName = hud && hud.querySelector('.hud-name');
-  const hudNum = hud && hud.querySelector('.hud-num');
   const bar = document.querySelector('.progress span');
-  let lastLevel = -1, lastY = scrollY, velocity = 0, ticking = false;
+  let lastY = scrollY, velocity = 0, ticking = false;
 
   function onScroll() {
     const vh = innerHeight;
@@ -63,6 +81,7 @@
       if (r.bottom < -vh || r.top > vh * 2) continue;
       let p;
       if (el.dataset.scroll === 'track') p = (vh * 0.7 - r.top) / r.height;
+      else if (el.dataset.scroll === 'out') p = -r.top / r.height; // 0 at top, 1 once scrolled past
       else p = (vh - r.top) / (vh + r.height);
       el.style.setProperty('--p', clamp(p).toFixed(4));
       // Roadmap: unlock each stage as the player reaches it
@@ -70,25 +89,34 @@
       stages.forEach((s, i) => s.classList.toggle('on', clamp(p) >= i / stages.length + 0.04));
     }
 
-    if (hud) {
-      let idx = -1;
-      levels.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.55) idx = i; });
-      hud.classList.toggle('show', idx >= 0);
-      if (idx >= 0 && idx !== lastLevel) {
-        const s = levels[idx];
-        hudName.textContent = s.dataset.level;
-        hudNum.textContent = `${idx + 1}/${levels.length}`;
-        if (lastLevel >= 0 && idx > lastLevel && !reduce) {
-          hud.classList.remove('up'); void hud.offsetWidth; hud.classList.add('up');
-        }
-        lastLevel = idx;
-      }
-    }
     ticking = false;
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   addEventListener('resize', onScroll);
   onScroll();
+
+  /* ---------- Pointer effects (desktop only): card tilt + cursor glow ---------- */
+  if (!reduce && matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.tilt').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ry', `${((e.clientX - r.left) / r.width - 0.5) * 10}deg`);
+        card.style.setProperty('--rx', `${((e.clientY - r.top) / r.height - 0.5) * -10}deg`);
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+      });
+    });
+    const glow = document.querySelector('.cursor-glow');
+    if (glow) {
+      addEventListener('pointermove', (e) => {
+        glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        glow.classList.add('on');
+      }, { passive: true });
+    }
+  }
 
   /* ---------- Brazzein molecule: 54 spheres, one per amino acid ---------- */
   const PTS = [[-0.495,-0.068,0.146],[0.054,-0.399,-0.528],[-0.857,-0.696,-0.512],[-1.699,-0.349,-0.322],[-2.004,0.026,0.477],[-1.297,-0.555,0.87],[-1.065,-0.457,1.73],[-1.894,-0.705,1.801],[-2.693,-0.904,1.714],[-1.788,-1.195,1.182],[-1.845,-0.97,0.203],[-1.816,-1.542,-0.477],[-2.007,-2.319,-0.532],[-2.113,-2.277,0.414],[-1.075,-2.028,0.367],[-0.329,-2.443,0.1],[0.341,-2.195,0.73],[0.881,-2.361,1.327],[0.537,-1.346,0.974],[1.333,-0.922,0.927],[1.321,0.058,0.803],[1.386,0.351,1.616],[0.37,0.342,1.227],[0.029,1.094,0.731],[-0.563,1.313,0.007],[-1.177,1.91,-0.011],[-0.371,2.307,0.068],[-0.772,2.763,0.642],[-0.105,2.259,1.201],[0.395,1.963,0.373],[0.517,2.404,-0.344],[-0.135,2.007,-1.001],[0.112,1.093,-1.368],[0.866,1.491,-1.225],[0.76,1.261,-2.051],[0.172,0.648,-2.484],[0.76,-0.08,-2.357],[-0.258,-0.1,-2.191],[-0.75,0.069,-1.246],[0.089,0.36,-0.833],[0.824,-0.022,-1.137],[1.075,0.439,-0.318],[1.348,1.109,0.183],[1.349,1.912,-0.072],[1.218,1.711,0.871],[2.005,1.403,0.732],[2.119,0.428,0.548],[2.31,-0.408,0.231],[1.816,-0.136,-0.621],[1.446,-0.996,-0.838],[1.426,-1.343,0.056],[0.616,-1.377,-0.565],[-0.33,-1.217,-0.189],[-0.038,-1.312,-1.027]];
