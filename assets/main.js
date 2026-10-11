@@ -27,6 +27,17 @@
     walk(el);
   });
 
+  /* ---------- Gallery: duplicate photos so the mobile carousel loops ---------- */
+  document.querySelectorAll('.gallery-track').forEach((track) => {
+    [...track.children].forEach((fig) => {
+      const c = fig.cloneNode(true);
+      c.classList.add('clone');
+      c.setAttribute('aria-hidden', 'true');
+      c.querySelectorAll('img').forEach((img) => { img.alt = ''; });
+      track.append(c);
+    });
+  });
+
   /* ---------- Reveal on scroll + counters ---------- */
   const counters = new Set();
   const io = new IntersectionObserver((entries) => {
