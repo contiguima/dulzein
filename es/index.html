@@ -64,30 +64,52 @@
   <main id="main">
     <!-- ===== Hero ===== -->
     <section class="hero" data-scroll="out">
-      <div class="cubes" aria-hidden="true">
-        <i class="cube" style="left:6%;--s:44px;--fall:700px;--spin:220deg;--r0:12deg"></i>
-        <i class="cube" style="left:44%;--s:30px;--fall:860px;--spin:-160deg;--r0:-20deg;top:4%"></i>
-        <i class="cube" style="left:58%;--s:38px;--fall:640px;--spin:120deg;--r0:30deg;top:70%"></i>
-        <i class="cube" style="left:88%;--s:52px;--fall:760px;--spin:-240deg;--r0:8deg;top:20%"></i>
-        <i class="cube" style="left:30%;--s:26px;--fall:900px;--spin:180deg;--r0:-35deg;top:82%"></i>
-        <i class="cube" style="left:94%;--s:30px;--fall:820px;--spin:-200deg;--r0:20deg;top:76%"></i>
-      </div>
       <div class="wrap">
-        <div>
-          <span class="pill">Nucleate Argentina | Génesis 2026</span>
+        <div class="hero-copy">
           <p class="pre">No dejes la gaseosa,</p>
           <h1 class="display">Dejá el <span class="g">azúcar.</span></h1>
-          <div class="brandline"><strong>DULZEIN BIO</strong><span>Edulcorante proteico producido en plantas</span></div>
-          <p class="lead">Brazzeína recombinante a partir de biomasa vegetal producida en hidroponía.</p>
+          <p class="tagline"><strong>Dulzein Bio</strong> <span aria-hidden="true">·</span> Edulcorante proteico producido en plantas</p>
           <div class="actions">
             <a class="btn" href="#interested">Contactanos</a>
             <a class="btn ghost" href="#how">Cómo funciona <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <div class="hero-mol">
-          <div class="float">
-            <canvas class="molecule" data-tilt data-start="0.4" role="img" aria-label="Modelo 3D giratorio de brazzeína: 54 esferas, una por aminoácido"></canvas>
-          </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg class="soda" viewBox="0 0 300 470">
+            <defs>
+              <linearGradient id="cola" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A4516"/><stop offset=".3" stop-color="#43180A"/><stop offset="1" stop-color="#120502"/></linearGradient>
+              <linearGradient id="glassFill" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".1" stop-color="#fff" stop-opacity=".07"/><stop offset=".88" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+              <radialGradient id="rimLight" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#3BE08D" stop-opacity=".55"/><stop offset="1" stop-color="#3BE08D" stop-opacity="0"/></radialGradient>
+              <clipPath id="liquid"><path d="M67 126H233L219 404Q217 420 201 420H99Q83 420 81 404Z"/></clipPath>
+            </defs>
+            <ellipse cx="150" cy="448" rx="120" ry="14" fill="#000" opacity=".55"/>
+            <rect x="172" y="-6" width="18" height="310" rx="9" fill="#3BE08D" transform="rotate(14 181 150)"/>
+            <rect x="172" y="30" width="18" height="16" fill="#D9E35A" transform="rotate(14 181 150)"/>
+            <rect x="172" y="70" width="18" height="16" fill="#D9E35A" transform="rotate(14 181 150)"/>
+            <g clip-path="url(#liquid)">
+              <rect x="0" y="126" width="300" height="320" fill="url(#cola)"/>
+              <rect x="86" y="118" width="64" height="58" rx="12" fill="#fff" fill-opacity=".2" stroke="#fff" stroke-opacity=".55" stroke-width="2" transform="rotate(-12 118 147)"/>
+              <rect x="146" y="132" width="60" height="54" rx="12" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-opacity=".45" stroke-width="2" transform="rotate(18 176 159)"/>
+              <rect x="112" y="186" width="54" height="50" rx="11" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".3" stroke-width="2" transform="rotate(8 139 211)"/>
+              <g class="fizz" fill="#FFD9A8" fill-opacity=".7">
+                <circle cx="96" cy="410" r="4" style="--d:0s"/><circle cx="128" cy="410" r="3" style="--d:.7s"/>
+                <circle cx="160" cy="410" r="5" style="--d:1.3s"/><circle cx="188" cy="410" r="3" style="--d:.3s"/>
+                <circle cx="206" cy="410" r="4" style="--d:1.9s"/><circle cx="114" cy="410" r="2.5" style="--d:2.4s"/>
+                <circle cx="146" cy="410" r="3.5" style="--d:2.9s"/><circle cx="176" cy="410" r="2.5" style="--d:1.1s"/>
+              </g>
+            </g>
+            <ellipse cx="150" cy="126" rx="83" ry="9" fill="#D4935A" opacity=".6"/>
+            <path d="M56 40H244L224 404Q222 428 200 428H100Q78 428 76 404Z" fill="url(#glassFill)" stroke="#fff" stroke-opacity=".5" stroke-width="2.5"/>
+            <path d="M56 40H244L224 404Q222 428 200 428H100Q78 428 76 404Z" fill="url(#rimLight)" opacity=".5"/>
+            <ellipse cx="150" cy="40" rx="94" ry="10" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2.5"/>
+            <path d="M76 74L92 388" stroke="#fff" stroke-opacity=".35" stroke-width="7" stroke-linecap="round"/>
+            <path d="M226 90L218 250" stroke="#fff" stroke-opacity=".18" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div class="drop" style="--x:2%;--y:4%;--s:clamp(48px,6.4vw,88px);--fall:620px;--dx:-160px;--spin:-190deg;--t:.1s"><div class="scube" style="--rx:-22deg;--ry:34deg;--dur:16s"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="drop" style="--x:70%;--y:-2%;--s:clamp(40px,5.2vw,72px);--fall:700px;--dx:180px;--spin:220deg;--t:.3s"><div class="scube" style="--rx:30deg;--ry:-28deg;--dur:13s"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="drop" style="--x:44%;--y:-14%;--s:clamp(36px,4.6vw,64px);--fall:820px;--dx:40px;--spin:160deg;--t:.5s"><div class="scube" style="--rx:-40deg;--ry:12deg;--dur:11s"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="drop" style="--x:80%;--y:46%;--s:clamp(44px,5.6vw,78px);--fall:560px;--dx:220px;--spin:-140deg;--t:.7s"><div class="scube" style="--rx:16deg;--ry:52deg;--dur:15s"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="drop" style="--x:-2%;--y:56%;--s:clamp(38px,4.8vw,66px);--fall:600px;--dx:-200px;--spin:200deg;--t:.9s"><div class="scube" style="--rx:-12deg;--ry:-40deg;--dur:12s"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </div>
       </div>
     </section>
@@ -390,7 +412,7 @@
         </div>
         <div class="actions" data-reveal style="--d:3">
           <!-- GOOGLE_FORM_URL: reemplazar por el link del Google Form del equipo -->
-          <a class="btn big" href="https://forms.gle/REPLACE_ME" target="_blank" rel="noopener">Completar el formulario <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+          <a class="btn btn-xl" href="https://forms.gle/REPLACE_ME" target="_blank" rel="noopener">Completar el formulario <span class="btn-ico" aria-hidden="true">↗</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a>
         </div>
         <p class="small note" data-reveal style="--d:4">Lleva 2 minutos. Te respondemos.</p>
       </div>
