@@ -20,7 +20,7 @@ Hero "Don't drop the soda, DROP THE SUGAR" → problema → alternativas → bra
 ## Animaciones
 
 - **Hero**: vaso de gaseosa (SVG, burbujas animadas) y cubos de azúcar en 3D (CSS) que caen al cargar, giran y salen despedidos al scrollear. El texto sube y se desvanece.
-- **Molécula de brazzeína**: modelo 3D en `<canvas>` con 54 esferas (una por aminoácido). Gira más rápido cuando scrolleás . Las coordenadas están en `PTS` dentro de `main.js`.
+- **Molécula de brazzeína**: modelo 3D en `<canvas>` con 54 esferas (una por aminoácido). Gira más rápido cuando scrolleás. Las coordenadas están en `PTS` dentro de `main.js`.
 - **Títulos** con `data-split`: entran palabra por palabra.
 - `data-reveal`: los elementos aparecen al entrar en pantalla (`left`, `right`, `pop`; demora con `style="--d:1"`).
 - `data-scroll`: expone `--p` (0 a 1) según el avance del scroll. Lo usan las bandas de texto, la lechuga que crece, la galería con parallax y la molécula que recorre el roadmap. `data-scroll="out"` mide la salida del hero; `"track"` mide el roadmap.
