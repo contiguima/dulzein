@@ -38,7 +38,7 @@ Abrir http://localhost:8080 (hace falta servidor: las rutas son absolutas, `/ass
 
 ## Editar
 
-- **Google Form**: buscar `GOOGLE_FORM_URL` en `index.html` y `es/index.html` y reemplazar `https://forms.gle/REPLACE_ME`.
+- **Google Form**: https://forms.gle/YH5h189s3psSVnnf9 (buscar `GOOGLE_FORM_URL` en `index.html` y `es/index.html` para cambiarlo).
 - **Textos**: están en el HTML de cada idioma; cualquier cambio hay que hacerlo en los dos.
 - **Dominio**: si no es `dulzein.bio`, reemplazarlo en los dos HTML, `robots.txt` y `sitemap.xml`.
 - **Fuentes**: van como link chico (`.src`) al lado de cada cifra; no hay sección de referencias.
@@ -65,6 +65,5 @@ Asesores y fotos del equipo: publicados con permiso (octubre 2026).
 
 ## Pendientes
 
-- [ ] Link del Google Form.
 - [ ] Links de fuente para: listado B2B (US$316–368/kg), modelo de fermentación (US$57–80/kg), artículo de Dimensions of Dental Hygiene, rangos del roadmap.
 - [ ] Registrar `dulzein.bio` y revisar la marca en INPI.
