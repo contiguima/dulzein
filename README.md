@@ -15,7 +15,7 @@ robots.txt, sitemap.xml
 
 ## Estructura de la landing
 
-Hero "Don't drop the soda, DROP THE SUGAR" → problema → alternativas → brazzeína → cómo funciona (lechuga) → mercado → roadmap → equipo + galería + asesores → **Interested?** con el botón al Google Form.
+Hero "Don't drop the soda, DROP THE SUGAR" → problema → alternativas → brazzeína → cómo funciona (lechuga) → mercado (precios, CAGR y panorama de empresas) → ambición + modelo B2B → roadmap (2026–2030) → equipo + galería + asesores → **Interested?** con el botón al Google Form.
 
 ## Animaciones
 
@@ -49,9 +49,14 @@ Probado sin scroll horizontal en 320, 375, 768, 1024 y 1280 px. En celular, la g
 
 ## Qué del deck NO está publicado (a propósito) ⚠
 
+Actualizado con el deck de octubre (versión 4).
+
+- **"Industry interest"** (Bimbo, PepsiCo, Coca-Cola, Mars, Kraft Heinz, Ingredion, Roquette): publicar esas marcas puede leerse como clientes o interés en Dulzein. En la web solo va "Business model: B2B".
+- **Logos** del panorama de empresas: van solo los nombres, como texto. Conviene verificar que cada empresa trabaje efectivamente con brazzeína.
+
 - **TAM/SAM/SOM**: las etiquetas del deck siguen inconsistentes (`US$140–200B M`).
-- **"Full FTO"** y "non-transgenic simplifies regulatory pathways": el análisis de FTO está pendiente.
-- **"Recognized as GRAS"**: puede leerse como aprobación regulatoria de la brazzeína.
+- **Tabla de FTO** ("Public Domain (FTO)", "Potential proprietary IP"): el análisis de FTO está pendiente.
+- **"GRAS organism"** y "no acumula alcaloides": pueden leerse como aprobación regulatoria y no tienen fuente.
 - **Frasco "Dulzein Bio"**: sería una foto de un producto que todavía no existe. **Capturas de noticias** (slide 3).
 
 Asesores y fotos del equipo: publicados con permiso (octubre 2026).
@@ -61,7 +66,8 @@ Asesores y fotos del equipo: publicados con permiso (octubre 2026).
 - **CAGR 10,3 %**: la fuente es **Coherent Market Insights** (US$13,4M en 2026 → US$26,7M en 2033), no Persistence Market Research.
 - **Cita de la OMS**: la web usa la frase textual del fact sheet de diabetes. "Sugar substitutes are under scrutiny too" no es una cita de la OMS.
 - **"> 98 °C"** → "98 °C, 2 h" (patente US5346998, pruebas a pH 2–8).
-- **"The smallest sweet protein"** → "one of the smallest".
+- **"The smallest sweet protein"** → "one of the smallest" (el deck v4 lo sigue diciendo).
+- **Roadmap**: el deck v4 pone "Scale it" en 2030 pero dice "First commercial agreement by 2029". La web usa **2030** en los dos lugares; conviene corregir el deck.
 
 ## Pendientes
 
